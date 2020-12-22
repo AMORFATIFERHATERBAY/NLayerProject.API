@@ -42,11 +42,12 @@ namespace NLayerProject.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<NotFoundFilter>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<NotFoundFilter>();
+           
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -80,7 +81,7 @@ namespace NLayerProject.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+          
             ////// Global düzeyde hata yakalama
             //app.UseExceptionHandler(config =>
             //{

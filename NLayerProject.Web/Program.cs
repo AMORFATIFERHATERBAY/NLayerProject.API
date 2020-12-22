@@ -7,14 +7,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace NLayerProject.API
+namespace NLayerProject.WEB
 {
     public class Program
     {
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-           
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -25,6 +24,3 @@ namespace NLayerProject.API
                 });
     }
 }
-
-
-

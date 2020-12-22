@@ -36,9 +36,6 @@ namespace NLayerProject.API.Extensions
 
         }
 
-        public static void Sum(this int s)
-        {
-            Console.WriteLine("Sum"+)
-        }
-    }
+       
+    }   
 }
