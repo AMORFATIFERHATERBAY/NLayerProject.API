@@ -17,6 +17,7 @@ using NLayerProject.Data;
 using NLayerProject.Data.Repositories;
 using NLayerProject.Data.UnitOfWorks;
 using NLayerProject.Service.Service;
+using NLayerProject.WEB.Filters;
 
 namespace NLayerProject.WEB
 {
@@ -32,6 +33,7 @@ namespace NLayerProject.WEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<NotFoundFilter>();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service<>));

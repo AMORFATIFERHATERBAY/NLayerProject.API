@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using NLayerProject.Core.Models;
 using NLayerProject.Core.Services;
 using NLayerProject.WEB.DTOs;
+using NLayerProject.WEB.Filters;
 
 namespace NLayerProject.WEB.Controllers
 {
@@ -37,5 +38,27 @@ namespace NLayerProject.WEB.Controllers
             await _categoryService.AddAsync(_mapper.Map<Category>(categoryDto));
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var category = await _categoryService.GetByIdAsycn(id);
+            return View(_mapper.Map<CategoryDto>(category));
+        }
+
+        [HttpPost]
+        public  IActionResult Update(CategoryDto categoryDto)
+        {
+            _categoryService.Update(_mapper.Map<Category>(categoryDto));
+            return RedirectToAction("Index");
+        }
+
+        [ServiceFilter(typeof(NotFoundFilter))]
+        public IActionResult Delete(int id)
+        {
+            var category = _categoryService.GetByIdAsycn(id).Result;
+            _categoryService.Remove(category);
+            return RedirectToAction("Index");
+        }
+
     }
 }

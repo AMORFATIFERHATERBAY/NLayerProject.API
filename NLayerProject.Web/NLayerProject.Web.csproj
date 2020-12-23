@@ -13,6 +13,7 @@
     <Folder Include="DTOs\" />
     <Folder Include="Mapping\" />
     <Folder Include="Views\Categories\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
